@@ -1,0 +1,1 @@
+- Keep the global music dock outside screen transitions, derive its visual playback state from audio events, and reserve bottom space in birthday scenes so controls remain unobstructed.
