@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useAnimationFrame, useMotionValue } from "framer-motion";
-import song from "@/assets/tum_hi_ho.mp3.asset.json";
 import Confetti from "react-confetti";
-import m1 from "@/assets/Untitled_design_2.webp.asset.json";
-import m2 from "@/assets/Untitled_design_3.webp.asset.json";
-import m3 from "@/assets/Your_paragraph_text.webp.asset.json";
 import { Button } from "@/components/ui/button";
 import { Play, Pause } from "lucide-react";
 
@@ -137,7 +133,14 @@ function Stars({ count = 64 }: { count?: number }) {
   );
 }
 
-const memories = [m1, m2, m3, m1, m2, m3];
+const memories = [
+  "/assets/Untitled design (2).png",
+  "/assets/Untitled design (3).png",
+  "/assets/Your paragraph text.png",
+  "/assets/Untitled design (2).png",
+  "/assets/Untitled design (3).png",
+  "/assets/Your paragraph text.png",
+];
 
 function MemoryRing({ paused }: { paused: boolean }) {
   const rotate = useMotionValue(0);
@@ -149,8 +152,8 @@ function MemoryRing({ paused }: { paused: boolean }) {
   const step = 360 / memories.length;
   return (
     <motion.div className="ring3d" style={{ rotateY: rotate }}>
-      {memories.map((memory, k) => (
-        <img key={k} className="ring3d-item" src={memory.url} alt={k < 3 ? `Favorite memory ${k + 1}` : ""} aria-hidden={k >= 3 || undefined}
+      {memories.map((src, k) => (
+        <img key={k} className="ring3d-item" src={src} alt={k < 3 ? `Favorite memory ${k + 1}` : ""} aria-hidden={k >= 3 || undefined}
           draggable={false} style={{ transform: `rotateY(${k * step}deg) translateZ(var(--ring-radius))` }} />
       ))}
     </motion.div>
@@ -326,7 +329,7 @@ export function CassettePlayer() {
   };
   return (
     <>
-      <audio ref={audio} src={song.url} loop preload="none"
+      <audio ref={audio} src="/assets/Tum Hi Ho Aashiqui 2 320 Kbps.mp3" loop preload="none"
         onPlay={() => setOn(true)} onPause={() => setOn(false)} onEnded={() => setOn(false)} />
       <div className="fixed bottom-6 right-6 z-[100] origin-bottom-right scale-[0.65] transform sm:scale-75 md:scale-90">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
